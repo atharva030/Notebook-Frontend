@@ -15,11 +15,10 @@ export const Notes = (props) => {
   
   useEffect(() => {
     if(localStorage.getItem('token')){
-    getNotes();
+      getNotes();
     }
     else{
       navigate("/login");
-
     }
     // eslint-disable-next-line
   }, []);
@@ -97,14 +96,14 @@ export const Notes = (props) => {
       <div className="row ">
         <h3>Your Notes</h3>
         {notes.length===0 && <h2 className="container text-center my-5">Oops! No Notes to Display</h2> }
-        
         {
           //mapping all fetched notes
+          
           notes.map((note) => {
             return (
               <>
-              <NoteItem note={note} handleShow={handleShow} showAlert={props.showAlert} key={note._id} />
-            {/* ); //passing note as a prop */}
+              <NoteItem note={note} handleShow={handleShow} showAlert={props.showAlert} key={note._id} /> 
+              {/* passing note as a prop */}
             </>
             );
           })

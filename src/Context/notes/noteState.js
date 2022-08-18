@@ -16,7 +16,7 @@ const NoteState = (props) => {
         method: "GET", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type":"application/json",
-          "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlZDYwYTE1ZTkxNDkyOTAwMjc1YjMxIn0sImlhdCI6MTY2MDczOTA0N30.1V5q1fGB9ba3Q9zASHmxgUJ_rUNshZ997bt-p4Dzpv8",
+          "auth-token":localStorage.getItem('token'),
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
       }
@@ -34,7 +34,7 @@ const NoteState = (props) => {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type":"application/json",
-          "auth-token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlZDYwYTE1ZTkxNDkyOTAwMjc1YjMxIn0sImlhdCI6MTY2MDczOTA0N30.1V5q1fGB9ba3Q9zASHmxgUJ_rUNshZ997bt-p4Dzpv8",
+          "auth-token":localStorage.getItem('token'),
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({title,description,tag}), // body data type must match "Content-Type" header
@@ -54,7 +54,7 @@ const NoteState = (props) => {
           method: "DELETE", // *GET, POST, PUT, DELETE, etc.
           headers: {
             "Content-Type": "application/json",
-            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlZDYwYTE1ZTkxNDkyOTAwMjc1YjMxIn0sImlhdCI6MTY2MDczOTA0N30.1V5q1fGB9ba3Q9zASHmxgUJ_rUNshZ997bt-p4Dzpv8",
+            "auth-token": localStorage.getItem('token'),
             // 'Content-Type': 'application/x-www-form-urlencoded',
           },
         }
@@ -77,7 +77,7 @@ const NoteState = (props) => {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
         headers: {
           "Content-Type": "application/json",
-          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjJlZDYwYTE1ZTkxNDkyOTAwMjc1YjMxIn0sImlhdCI6MTY2MDczOTA0N30.1V5q1fGB9ba3Q9zASHmxgUJ_rUNshZ997bt-p4Dzpv8",
+          "auth-token": localStorage.getItem('token'),
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({title,description,tag}), // body data type must match "Content-Type" header

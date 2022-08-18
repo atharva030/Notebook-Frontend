@@ -14,7 +14,8 @@ const NoteItem = (props) => {
           <p className="card-text">{note.description}</p>
           <p className="card-text">{note.id}</p>
           <i className="fa-solid fa-trash " onClick={()=>{
-            deleteNote(note._id); props.showAlert("Deleted Successfully","success")//calling deleteNote in the noteState and passing id to it
+            deleteNote(note._id); 
+            props.showAlert("Deleted Successfully","success")//calling deleteNote in the noteState and passing id to it
           }}></i>
             <i className="fa-solid fa-pen-to-square mx-3" onClick={()=>{handleShow(note);}
           }></i>

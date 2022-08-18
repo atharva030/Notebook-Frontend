@@ -67,11 +67,7 @@ router.post("/createuser",
   }
 );
 //ROUTE 2:Authenticate user using: POST "/api/auth/login" Dosen't require auth i.e. no login required
-router.post("/login",
-  [
-    body("email", "Enter Valid Email").isEmail(),
-    body('password','Password cannot be blank').exists()
-  ],
+router.post("/login",[body("email", "Enter Valid Email").isEmail(), body('password','Password cannot be blank').exists()],
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
