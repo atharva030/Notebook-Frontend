@@ -15,32 +15,38 @@ const Signup = (props) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, email, password, cpassword } = credentials;
+    if (credentials.password === credentials.cpassword) {
+      const { name, email, password } = credentials;
 
-    const response = await fetch(
-      `http://localhost:5000/api/auth/createuser`,
-
-      {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        headers: {
-          "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify({ name, email, password }), // body data type must match "Content-Type" header
-      }
-    );
-    const json = await response.json();
-    console.log(json);
-    if(json.success)
-      { //save auth-token and redirect
-        // localStorage.setItem("token", json.authToken);
-        props.showAlert("Account Created Successfully!!","success")
-        navigate("/login");      
-      }
-        else{
-          props.showAlert("Invalid Credentials","danger")
+      const response = await fetch(
+        `http://localhost:5000/api/auth/createuser`,
+        {
+          method: "POST", // *GET, POST, PUT, DELETE, etc.
+          headers: {
+            "Content-Type": "application/json",
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: JSON.stringify({ name, email, password }), // body data type must match "Content-Type" header
         }
-      };
+      );
+      const json = await response.json();
+      console.log(json);
+      if (json.success) {
+        //save auth-token and redirect
+        // localStorage.setItem("token", json.authToken);
+        e.preventDefault();
+        props.showAlert("Account Created Successfully!!", "success");
+        navigate("/login");
+      } else {
+        props.showAlert("Invalid Credentials", "danger");
+      }
+    } else {
+      props.showAlert(
+        "Confirm Password must be same as the password",
+        "danger"
+      );
+    }
+  };
 
   return (
     <div className="container">
@@ -107,9 +113,12 @@ const Signup = (props) => {
             minLength={5}
             placeholder="Confirm Your Password"
             required
-         />
+          />
         </div>
-      <p > Already have an Account? <Link to="/login">Login</Link> </p>
+        <p>
+          {" "}
+          Already have an Account? <Link to="/login">Login</Link>{" "}
+        </p>
 
         <button type="submit" className="btn btn-primary">
           Submit

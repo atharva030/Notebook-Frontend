@@ -21,6 +21,7 @@ function App() {
   };
   return (
     <>
+    
         <NoteState>
           <Router>
             <Navbar showAlert={showAlert} />
