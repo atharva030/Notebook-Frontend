@@ -1,139 +1,45 @@
-import * as React from "https://cdn.skypack.dev/react@17.0.1";
-import * as ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
-import "../Styles/sidebar.css"
-import { useState,useEffect } from "react";
+import React from 'react'
+import '../Styles/sidebar.css'
+import {  Link,useLocation, useNavigate } from "react-router-dom";
+const Sidebar = (props) => {
+  let location = useLocation();
+  let navigate=useNavigate();
+  const handleLogout=()=>{
+    localStorage.removeItem('token');
+    navigate('/login')
+    props.showAlert("Will Meet Soon!!","success")
+  }
+  return (
+    <>
+    <div class="header">
+      <ul className='head-list'>
+      {!localStorage.getItem('token')?<div className="d-flex">
+        <Link className="btn btn-primary mx-2" to="/signup"  role="button">Sign Up</Link>
+        <Link className="btn btn-primary mx-2" to="/login" role="button">Login</Link>
+      </div>:<button onClick={handleLogout} className='btn btn-primary'>Logout</button>}
+      </ul>
+    </div>
+    <input type="checkbox" class="openSidebarMenu" id="openSidebarMenu"/>
+    <label for="openSidebarMenu" class="sidebarIconToggle">
+      <div class="spinner diagonal part-1"></div>
+      <div class="spinner horizontal"></div>
+      <div class="spinner diagonal part-2"></div>
+    </label>
+    <div id="sidebarMenu">
+      <ul class="sidebarMenuInner">
+        <li>Jelena Jovanovic <span>Web Developer</span></li>
+        <li><a href="https://vanila.io" target="_blank">Company</a></li>
+        <Link className={`nav-link ${location.pathname==="/" ? "active":""}`} aria-current="page" to="/">Home</Link>
+        <Link className={`nav-link ${location.pathname==="/about " ? "active":""}`} to="/about">About</Link>
+        
+        <li><a href="https://twitter.com/plavookac" target="_blank">Twitter</a></li>
+        <li><a href="https://www.youtube.com/channel/UCDfZM0IK6RBgud8HYGFXAJg" target="_blank">YouTube</a></li>
+        <li><a href="https://www.linkedin.com/in/plavookac/" target="_blank">Linkedin</a></li>
+      </ul>
+    </div>
+   
+    </>
+  );
+}
 
-const Sidebar = () => {
-    const useMediaQuery = (query) => {
-      const [matches, setMatches] = useState(false);
-  
-      useEffect(() => {
-        const media = window.matchMedia(query);
-        if (media.matches !== matches) {
-          setMatches(media.matches);
-        }
-        const listener = () => setMatches(media.matches);
-        window.addEventListener("resize", listener);
-        return () => window.removeEventListener("resize", listener);
-      }, [matches, query]);
-  
-      return matches;
-    };
-    let menuItems = [
-      {
-        name: "Eduhance",
-        iconName: "menu",
-      },
-      {
-        name: "Home",
-        iconName: "home",
-        type: "solid",
-      },
-      {
-        name: "Explore",
-        iconName: "compass",
-        type: "solid",
-      },
-      {
-        name: "Messages",
-        iconName: "envelope",
-        type: "solid",
-      },
-      {
-        name: "Resources",
-        iconName: "spreadsheet",
-        type: "solid",
-      },
-      {
-        name: "Starred",
-        iconName: "star",
-        type: "solid",
-      },
-      {
-        name: "Settings",
-        iconName: "cog",
-        type: "solid",
-      },
-      {
-        name: "Log Out",
-        iconName: "log-out",
-        color: "red",
-        rotate: "180",
-      },
-    ];
-    const [hovered, setHovered] = useState(null);
-    const [active, setActive] = useState(1);
-    const [animate, setAnimate] = useState(false);
-    const [expanded, setExpanded] = useState(false);
-    const changeSmall = useMediaQuery("(max-height: 550px)");
-    let delay = 1;
-    useEffect(() => {
-      setAnimate(true);
-      let timer = setTimeout(() => setAnimate(false), delay * 1000);
-  
-      return () => {
-        clearTimeout(timer);
-      };
-    }, [active, delay]);
-  
-    return (
-      <div className={`sidebar ${expanded && "expanded"}`}>
-        {menuItems.map((item, index) => {
-          let middle = false;
-          if (!(index === 0 || index === menuItems.length - 1)) {
-            middle = true;
-          }
-          return (
-            <div
-              className={`boxicon-container ${
-                expanded && "expanded-boxicon-container"
-              }`}
-              onMouseEnter={() => {
-                if (middle) {
-                  setHovered(index);
-                }
-              }}
-              onMouseLeave={() => {
-                if (middle) {
-                  setHovered(null);
-                }
-              }}
-              onClick={() => {
-                if (middle) {
-                  setActive(index);
-                }
-                if (index === 0) {
-                  setExpanded(!expanded);
-                }
-              }}
-              key={index}
-            >
-              <box-icon
-                class={`${middle && "boxicon"} 
-                        ${!middle && "first-and-last-trash-fix"}
-                        ${active === index && "active"}
-                        `}
-                size={changeSmall ? "sm" : "md"}
-                name={item.iconName}
-                type={item.type}
-                color={
-                  hovered === index || active === index ? "white" : item.color
-                }
-                animation={active === index && animate ? "tada" : ""}
-                rotate={item.rotate}
-              ></box-icon>
-              <p
-                className={`description 
-              ${expanded && "show-description"}
-              ${active === index && "active-description"}`}
-              >
-                {item.name}
-              </p>
-            </div>
-          );
-        })}
-      </div>
-    );
-  };
-  export default Sidebar;
-
+export default Sidebar

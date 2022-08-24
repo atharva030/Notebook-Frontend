@@ -49,7 +49,7 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="container my-5">
       <h2 className="text-center">Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

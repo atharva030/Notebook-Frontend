@@ -2,12 +2,14 @@ import "./App.css";
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
+
 import Home from "./Components/Home";
 import About from "./Components/About";
 import NoteState from "./Context/notes/noteState";
 import Alert from "./Components/Alert";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
+import Sidebar from "./Components/Sidebar";
 function App() {
   const [alert, setAlert] = useState(null)
   const showAlert = (message, type) => {
@@ -21,10 +23,9 @@ function App() {
   };
   return (
     <>
-    
         <NoteState>
           <Router>
-            <Navbar showAlert={showAlert} />
+            <Sidebar showAlert={showAlert} />
            
             <Alert alert={alert}/>
             <div className="container">
