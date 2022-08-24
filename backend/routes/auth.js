@@ -27,7 +27,6 @@ router.post("/createuser",
     }
     try {
       const password = req.body.password;
-      const cpassword = req.body.cpassword;
       //creating new users
       
       let user = await User.findOne({ email: req.body.email }); //check for duplicate email
@@ -37,7 +36,7 @@ router.post("/createuser",
       
       //hashing techninque for password
       const salt = await bcrypt.genSalt(10);
-      const secPass = await bcrypt.hash(req.body.password, salt);
+      const secPass = await bcrypt.hash(password, salt);
 
       user = await User.create({
         name: req.body.name,
