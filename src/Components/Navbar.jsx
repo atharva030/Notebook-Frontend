@@ -35,3 +35,36 @@ const Navbar = (props) => {
 }
 
 export default Navbar
+
+// import React from 'react'
+// import {  Link,useLocation, useNavigate } from "react-router-dom";
+// import '../Styles/navbar.css'
+// const Navbar = (props) => {
+//   let location = useLocation();
+//   let navigate=useNavigate();
+//   const handleLogout=()=>{
+//     localStorage.removeItem('token');
+//     navigate('/login')
+//     props.showAlert("Will Meet Soon!!","success")
+//   }
+//   return (
+//     <>
+//       <div class="nav">
+//         <div class="nav-links">
+//           <Link className='logo'  to='/'>Rem-Book</Link>
+//           <Link  className='l-nav-button'to="/">Home</Link>
+//           <Link className='l-nav-button' to="/about">About</Link>
+//           </div>
+//           {!localStorage.getItem('token')?
+//           <div className='right-button'>
+//             <Link className='nav-button' to="/signup">Sign Up</Link>
+//             <Link className='nav-button' to="/login">Login</Link>
+//           </div>
+//           :<button onClick={handleLogout}>Logout</button>}
+//         </div>
+      
+//     </>
+//   )
+// }
+
+// export default Navbar

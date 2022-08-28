@@ -9,7 +9,6 @@ import NoteState from "./Context/notes/noteState";
 import Alert from "./Components/Alert";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
-import Sidebar from "./Components/Sidebar";
 function App() {
   const [alert, setAlert] = useState(null)
   const showAlert = (message, type) => {
@@ -25,8 +24,7 @@ function App() {
     <>
         <NoteState>
           <Router>
-            <Sidebar showAlert={showAlert} />
-           
+            <Navbar showAlert={showAlert}/>           
             <Alert alert={alert}/>
             <div className="container">
               <Routes>
