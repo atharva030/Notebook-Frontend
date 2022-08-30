@@ -21,7 +21,7 @@ body{
         #23a2f6
     );
     left: -80px;
-    top: -44px;
+    top: -14px;
 }
 .shape:last-child{
     background: linear-gradient(
@@ -29,22 +29,36 @@ body{
         #ff512f,
         #f09819
     );
-    right: -30px;
-    bottom: -80px;
+    right: -71px;
+    bottom: -98px;
 }
-form{
+.login-form{
     height: 520px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
-    top: 57%;
+    top: 55%;
     left: 50%;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
+}
+.signup-form{
+    height: 42rem;
+    width: 30rem;
+    background-color: rgba(255,255,255,0.13);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 53%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    padding: 34px 35px;
 }
 form *{
     font-family: 'Poppins',sans-serif;
@@ -62,7 +76,7 @@ form h3{
 
 label{
     display: block;
-    margin-top: 30px;
+    margin-top: 18px;
     font-size: 16px;
     font-weight: 500;
 }
@@ -96,13 +110,11 @@ input{
 .social{
   margin-top: 30px;
   display: flex;
+  justify-content: center;
 }
-.go{
-    
-}
+
 .social div{
   background: red;
-  
   width: 150px;
   cursor: pointer;;
   border-radius: 3px;
